@@ -31,7 +31,18 @@ class Del_char{
 }; 
 #endif
 
+//1.遍历查找删除
+//2.贪心算法
 
 int main(){
-  string s
+  string A("abcd2342343212677");
+  string B("231");
+  auto cur = A.begin();
+  while(cur != A.end()){
+    if(B.find(*cur) != -1){
+      A.erase(cur);
+
+    }
+  }
+
 }

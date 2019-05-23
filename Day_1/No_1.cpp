@@ -28,30 +28,31 @@ team1:{2,5,8}, team2:{1,5,5}, 这时候水平值总和为10.
   输出例子: 
   10
 #endif
-//输出所有队伍的水平值总和最大值
+  //输出所有队伍的水平值总和最大值
 #include <iostream>
 #include <algorithm>
 
-using namespace std;
+  using namespace std;
 
 
-int main() {
-  int n;
-  cin>>n;
-  int *arr = new int[3*n];
-  int i = 0;
-  for(; i < 3*n; i++){
-      cin>>arr[i];
+  int main() {
+    int n;
+    while(cin>>n){
+      int *arr = new int[3*n];
+      int i = 0;
+      for(; i < 3*n; i++){
+        cin>>arr[i];
+      }
+      sort(arr, arr+3*n);
+      long sum = 0;
+      int j = 1;
+      while(j <= n){
+        sum += arr[3*n - 2*j];
+        j++;
+      }
+      cout<<sum<<endl;
+    }
+    return 0;
   }
-  sort(arr, arr+3*n);
-  long sum = 0;
-  int j = 1;
-  while(j <= n){
-    sum += arr[3*n - 2*j];
-    j++;
-  }
-  cout<<sum<<endl;
-  return 0;
-}
 
 
