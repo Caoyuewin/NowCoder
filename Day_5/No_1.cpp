@@ -15,7 +15,7 @@ int main() {
 
   string A_copy(A);
   size_t pos = 0;
-  while(pos != A_copy.size()){
+  while(pos <= A_copy.size()){
     A = A_copy;
     A.insert(pos, B);
     //cout<<A<<endl;
