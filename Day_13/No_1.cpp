@@ -11,7 +11,15 @@ int main() {
 
   size_t pos = 0;
   size_t spacepos = pos;
-
+  int spacenum = 0;
+  while(pos < command.size()){
+    if(command[pos] == ' '){
+      ++spacenum;
+    }
+    ++pos;
+  }
+  cout << spacenum << endl;
+  pos = 0;
   while(pos < command.size()){
     if(command[pos] == '"'){
       int leftpos = pos;//左引号
