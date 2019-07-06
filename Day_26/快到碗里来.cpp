@@ -3,14 +3,15 @@
 
 using namespace std;
 
-long double r_to_c(long double r){
-  long double c = 0;//周长
-  
+long double r_to_c(string r){
+  char carry = '0';
+  char product = '0';
+  int i = r.size() - 1;
+  for(; i >= 0; i--){
+
+  }
 }
 
-void Compare_n_r(string n, string r){
-  if()
-}
  
 int main() {
   string n,r;
