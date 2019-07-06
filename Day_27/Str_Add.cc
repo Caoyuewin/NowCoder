@@ -3,18 +3,7 @@
 #include <algorithm>
 
 using namespace std;
-
-void str_to_num(string& str){
-  size_t i = 0;
-  for(; i < str.size(); i++){
-    str[i] -= '0';
-  }
-}
-string Big_Add(string& s1, string& s2){
-  //将字符变成数字
-  //str_to_num(s1);
-  //str_to_num(s2);
-  //反转字符串
+string add(string& s1, string& s2) {
   reverse(s1.begin(), s1.end());
   reverse(s2.begin(), s2.end());
   //进位位
@@ -23,20 +12,27 @@ string Big_Add(string& s1, string& s2){
   int tmp = 0;
   size_t i = 0;
   string sum;
-  sum.reserve(s1.size() + s2.size());
-  for(; i < s1.size() || i < s2.size(); i++){
+  if (s2.size() > s1.size()) {
+    swap(s1, s2);
+    s2.resize(s1.size(), '0');
+  }
+  else {
+    s2.resize(s1.size(), '0');
+  }
+  sum.resize(s1.size());
+  for (; i < s1.size(); i++) {
     tmp = (s1[i] - '0') + (s2[i] - '0') + carry;
-    if(tmp >= 10){
+    if (tmp >= 10) {
       carry = tmp / 10;
     }
     else
       carry = 0;
-    sum[i] = tmp % 10;
+    sum[i] = tmp % 10 + '0';
   }
   //处理最高位
-  if(sum[i] >= 10){
-    sum[i+1] = sum[i] / 10;
-    sum[i] %= 10;
+  if (sum[i] - '0' >= 10) {
+    sum[i + 1] = (sum[i] - '0') / 10 + '0';
+    sum[i] = (sum[i] - '0') % 10 + '0';
   }
   reverse(sum.begin(), sum.end());
   return sum;
@@ -44,8 +40,9 @@ string Big_Add(string& s1, string& s2){
 
 int main() {
   string a, b;
-  cin >> a >> b;
-  cout << Big_Add(a,b) << endl;
+  while(cin >> a >> b){
+    cout << add(a,b) << endl;
+  }
   return 0;
 }
 
