@@ -23,6 +23,17 @@ int main(){
     getline(cin, s1);
     getline(cin, s2);
     
+    //把第二个字符串的信息存到一个哈希数组
+    int hash[256]{0};
+    for(size_t i = 0; i < s2.size(); ++i) {
+        hash[s2[i]]++;
+    }
+    string ret;
+    for(size_t i = 0; i < s1.size(); ++i) {
+        if(hash[s1[i]] == 0)
+            ret += s1[i]; 
+    } 
+    cout << ret << endl;
 }
 #if 0
 class Del_char{
